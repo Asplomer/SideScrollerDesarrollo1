@@ -9,13 +9,14 @@ namespace sideScroller {
 	static float Speed = 80.0f;
 	static Vector2 vecSpeed = { 0.0f,0.0f };
 	static Rectangle origin = { 0.0f, 0.0f,64.0f, 64.0f};
-
+	static bool crushed= false;
 	static float shipAngle;
 	static float frameCounter;
 	void InitShip() {
 		texture = LoadTexture("res/Ship.png");
 		shipAngle = 0.0f;
 		frameCounter = 0.0f;
+		crushed = false;
 	}
 
 	void DrawShip(float rot) {
@@ -31,33 +32,9 @@ namespace sideScroller {
 			aux.x += texture.width / 2;
 			aux.y += 2 * texture.height / 3;
 		}
-		/*
-		if (frameCounter < 1) {
-			if (shipAngle <= 0.3f&& shipAngle<=-0.3f)
-				aux.y += texture.height/3;
-			if(shipAngle<2 || shipAngle >-2)
-				aux.y += texture.height / 3 *2;
-		}
-		else{
-				if (shipAngle < 1 && shipAngle >2 ||(shipAngle > -1 && shipAngle <-2))
-					aux.x+= texture.width / 2;
-				if (shipAngle <= 0.3f&& shipAngle <= -0.3f) {
-					aux.x+= texture.width / 2;
-					aux.y+= texture.height / 3;
-
-				}
-				if (shipAngle < 2|| shipAngle >-2) {
-					aux.x+= texture.width / 2;
-					aux.y+= 2* texture.height / 3;
-				}
-			}*/
-
+	
 		Vector2 aux2 = { _ship.x, _ship.y};
-		//DrawTexturePro(texture,origin, aux, aux2, rotation, WHITE);
-		//DrawRectanglePro(aux, aux2, 0.0f, WHITE);
-		//DrawTexturePro(texture,origin,auxa,aux2,rot,WHITE);
-
-
+		if(!crushed)
 		DrawTextureRec(texture, aux, aux2, WHITE);
 	}
 
@@ -93,53 +70,17 @@ namespace sideScroller {
 		if (IsKeyDown(KEY_SPACE)) {
 			SetShot(true);
 		}
-		/*
-		
-		Vector2 mousePos = GetMousePosition();
-		Vector2 dir = { _ship.x - mousePos.x, _ship.y - mousePos.y };
-
-		float moduloDir = sqrt(pow(dir.x, 2) + pow(dir.y, 2));
-		
-		if (moduloDir > 0.0f){
-			rotation = acos((_ship.y - mousePos.y) / moduloDir) / DEG2RAD;
-		}
-
-		if (_ship.x > mousePos.x) {
-			rotation = 360 - rotation;
-		}
-
-		vecSpeed.x = sin(rotation*DEG2RAD) *GetFrameTime();
-		vecSpeed.y = cos(rotation*DEG2RAD) *GetFrameTime();
-
-		if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
-			if (accelSpeed < 2) accelSpeed += 0.04f;
-		}
-		//else if (accelSpeed > 0)accelSpeed -= 0.0004f;
-		else if (accelSpeed < 0) accelSpeed = 0;
-
-
-		
-		_ship.x += vecSpeed.x * accelSpeed* BASESPEED;
-		_ship.y -= vecSpeed.y * accelSpeed* BASESPEED;
-
-		
-		if (_ship.x > screenWidth-5.0f) {
-			_ship.x -= screenWidth+5.1f; 
-		}
-		else if (_ship.x +5.0f < 0.0f) {
-			_ship.x += screenWidth+5.1f;
-		}
-		if (_ship.y > screenHeight- 5.0f) {
-			_ship.y -= screenHeight + 5.1f;
-		}
-		else if (_ship.y + 5.0f < 0.0f) {
-			_ship.y += screenHeight + 5.1f;
-		}*/
 	}
 	void UnloadShip() {
 		UnloadTexture(texture);
 	}
 	Rectangle GetShip() {
 		return _ship;
+	}
+	void SetCrushed() {
+		crushed = true;
+	}
+	bool GetCrushed() {
+		return crushed;
 	}
 }

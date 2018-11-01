@@ -41,25 +41,16 @@ namespace sideScroller {
 			UpdateBullet(GetShip());
 		}
 		else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && (GetMouseX() < 330) && (GetMouseX() > 250)
-			&& (GetMouseY() < 250) && (GetMouseY() > 230)
-			) {
+			&& (GetMouseY() < 250) && (GetMouseY() > 230)) {
 			gameState = Start;
-
-
-			/*
-			Vector2 aux = { GetMousePosition().x, GetMousePosition().y };
-			if (aux.x > 250 && aux.x < 360 && aux.y >200 && aux.y < 250) {
-				paused = false;
 			}
-			if (aux.x > 250 && aux.x < 360 && aux.y >230 && aux.y < 280) {
-				gameState = Start;
+		if (AllDestroyed() || GetCrushed()) {
 
-			}*/
+			//CloseAudioDevice();
 
+
+			gameState = End;
 		}
-			if (AllDestroyed()) {
-				gameState = End;
-			}
 	}
 	void DrawPlay() {
 		DrawCloud();

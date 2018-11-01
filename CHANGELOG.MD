@@ -1,5 +1,10 @@
 # Changelog
 
+
+## [1.1] - 2018-11-01
+### fixed
+- minor fixes
+
 ## [0.8.2] - 2018-10-26
 ### Added
 - Bomb sprites

@@ -27,5 +27,7 @@ namespace sideScroller {
 	void InputShip();
 	void UnloadShip();
 	Rectangle GetShip();
+	void SetCrushed();
+	bool GetCrushed();
 };
 #endif

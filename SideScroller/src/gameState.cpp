@@ -8,9 +8,9 @@ namespace sideScroller
 	int score1 = 0;
 	int gameState = Start;
 
-	int verMajor = 0;
+	int verMajor = 1;
 
-	float verMinor = 8.2f;
+	int verMinor = 1;
 
 	static void InitGame() {
 		screenWidth = 800;

@@ -82,8 +82,12 @@ namespace sideScroller {
 
 			if (CheckCollisionRecs(r, aux) && !aArray[i].destroyed) {
 				if (bullet) {
-				SetShot(false);
-			}
+					SetShot(false);
+				}
+				else {
+					SetCrushed();
+				}
+
 				DestroyAsteroid(i);
 				return true;
 			}

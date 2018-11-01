@@ -5,7 +5,7 @@
 #include "play.h"
 #include <math.h>
 #include "raylib.h"
-
+#include "ship.h"
 using namespace std;
 namespace sideScroller {
 #define ARRAYSIZE 5
