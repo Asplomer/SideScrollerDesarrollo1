@@ -111,8 +111,7 @@
       <AdditionalDependencies>raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir "$(TargetDir)res"
-xcopy "$(SolutionDir)res" "$(TargetDir)res" /E /I /Y</Command>
+      <Command>$(ProjectDir)BASICCOPY.bat "$(TargetDir)" "$(SolutionDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -142,8 +141,7 @@ xcopy "$(SolutionDir)res" "$(TargetDir)res" /E /I /Y</Command>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir "$(TargetDir)res"
-xcopy "$(SolutionDir)res" "$(TargetDir)res" /E /I /Y</Command>
+      <Command>$(ProjectDir)BASICCOPY.bat "$(TargetDir)" "$(SolutionDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
